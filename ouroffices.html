@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Offices - BSSMC</title>
+  <link rel="icon" href="Assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .office-featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      overflow: hidden;
+      border-radius: 36px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.76));
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 28px;
+    }
+
+    .office-featured-image img {
+      height: 100%;
+      object-fit: cover;
+      min-height: 430px;
+    }
+
+    .office-featured-copy {
+      padding: 34px;
+    }
+
+    .office-featured-copy .eyebrow,
+    .branch-card .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .office-featured-copy h2,
+    .branch-card h3 {
+      margin-bottom: 14px;
+      color: var(--text-dark);
+    }
+
+    .office-featured-copy p,
+    .branch-card p,
+    .hours-panel p {
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+
+    .office-services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 22px 0 26px;
+    }
+
+    .office-services li {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(76, 175, 47, 0.10);
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .branches-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .branch-card {
+      overflow: hidden;
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.76));
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .branch-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .branch-card img {
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .branch-card-content {
+      padding: 24px;
+    }
+
+    .office-bottom-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: start;
+      margin-top: 28px;
+    }
+
+    .map-panel,
+    .hours-panel {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.76));
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      border-radius: 34px;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .map-panel img {
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+    }
+
+    .hours-panel {
+      padding: 30px;
+    }
+
+    .hours-panel .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hours-panel h3 {
+      margin-bottom: 14px;
+      color: var(--text-dark);
+    }
+
+    .hours-table {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(76, 175, 47, 0.07);
+    }
+
+    .hours-row strong {
+      color: var(--text-dark);
+    }
+
+    .hours-row span {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    @media (max-width: 1024px) {
+      .office-featured,
+      .office-bottom-grid,
+      .branches-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .office-featured-copy,
+      .branch-card-content,
+      .hours-panel {
+        padding: 22px 18px;
+      }
+
+      .hours-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-box">
+          <div class="page-hero-copy">
+            <div class="hero-badge">Our Offices</div>
+            <h1>Convenient locations ready to serve members and the community</h1>
+            <p>
+              Visit our offices for membership concerns, services, inquiries, and cooperative support.
+            </p>
+          </div>
+          <div class="page-hero-image">
+            <img src="Assets/Offices/offices-hero.jpg" alt="BSSMC Offices" onerror="this.src='https://via.placeholder.com/500x400?text=Our+Offices'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="container">
+        <div class="office-featured">
+          <div class="office-featured-image">
+            <img src="Assets/Offices/main-office.jpg" alt="BSSMC Main Office" onerror="this.src='https://via.placeholder.com/700x500?text=Main+Office'">
+          </div>
+
+          <div class="office-featured-copy">
+            <span class="eyebrow">Main Office</span>
+            <h2>BSSMC Main Office</h2>
+            <p><strong>Address:</strong> Main Office, Benguet, Philippines</p>
+            <p><strong>Landmark:</strong> Near the municipal center</p>
+            <p><strong>Contact:</strong> (074) 123-4567 | +63 946 237 9895</p>
+            <p><strong>Email:</strong> mainoffice@bssmc.com</p>
+
+            <ul class="office-services">
+              <li>Membership Registration</li>
+              <li>Loan Applications</li>
+              <li>Product Purchases</li>
+              <li>Member Services</li>
+              <li>Administrative Office</li>
+            </ul>
+
+            <a href="#" class="btn btn-primary">Get Directions</a>
+          </div>
+        </div>
+
+        <div class="section-heading">
+          <span class="eyebrow">Branch Offices</span>
+          <h2>Additional offices for easier access and service</h2>
+        </div>
+
+        <div class="branches-grid">
+          <div class="branch-card">
+            <img src="Assets/Offices/branch1.jpg" alt="La Trinidad Branch" onerror="this.src='https://via.placeholder.com/500x300?text=La+Trinidad+Branch'">
+            <div class="branch-card-content">
+              <span class="eyebrow">Branch Office</span>
+              <h3>La Trinidad Branch</h3>
+              <p><strong>Address:</strong> KM 5, La Trinidad, Benguet</p>
+              <p><strong>Hours:</strong> Mon-Fri 8:00 AM - 5:00 PM</p>
+              <p><strong>Contact:</strong> (074) 234-5678</p>
+              <p><strong>Services:</strong> Membership, Loans, Products</p>
+            </div>
+          </div>
+
+          <div class="branch-card">
+            <img src="Assets/Offices/branch2.jpg" alt="Baguio Branch" onerror="this.src='https://via.placeholder.com/500x300?text=Baguio+Branch'">
+            <div class="branch-card-content">
+              <span class="eyebrow">Branch Office</span>
+              <h3>Baguio Branch</h3>
+              <p><strong>Address:</strong> Session Road, Baguio City</p>
+              <p><strong>Hours:</strong> Mon-Sat 9:00 AM - 6:00 PM</p>
+              <p><strong>Contact:</strong> (074) 345-6789</p>
+              <p><strong>Services:</strong> Products, Member Services</p>
+            </div>
+          </div>
+
+          <div class="branch-card">
+            <img src="Assets/Offices/branch3.jpg" alt="Kabayan Branch" onerror="this.src='https://via.placeholder.com/500x300?text=Kabayan+Branch'">
+            <div class="branch-card-content">
+              <span class="eyebrow">Branch Office</span>
+              <h3>Kabayan Branch</h3>
+              <p><strong>Address:</strong> Poblacion, Kabayan, Benguet</p>
+              <p><strong>Hours:</strong> Mon-Fri 8:00 AM - 4:30 PM</p>
+              <p><strong>Contact:</strong> (074) 456-7890</p>
+              <p><strong>Services:</strong> Membership, Agricultural Loans</p>
+            </div>
+          </div>
+
+          <div class="branch-card">
+            <img src="Assets/Offices/branch4.jpg" alt="Itogon Branch" onerror="this.src='https://via.placeholder.com/500x300?text=Itogon+Branch'">
+            <div class="branch-card-content">
+              <span class="eyebrow">Branch Office</span>
+              <h3>Itogon Branch</h3>
+              <p><strong>Address:</strong> Poblacion, Itogon, Benguet</p>
+              <p><strong>Hours:</strong> Mon-Fri 8:30 AM - 5:00 PM</p>
+              <p><strong>Contact:</strong> (074) 567-8901</p>
+              <p><strong>Services:</strong> Full Service Office</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="office-bottom-grid">
+          <div class="map-panel">
+            <img src="Assets/Offices/map-placeholder.jpg" alt="Map of Offices" onerror="this.src='https://via.placeholder.com/800x500?text=Interactive+Map+Coming+Soon'">
+          </div>
+
+          <div class="hours-panel">
+            <span class="eyebrow">Office Hours</span>
+            <h3>General office schedule</h3>
+            <p>Please note that branch hours may vary depending on location and schedule.</p>
+
+            <div class="hours-table">
+              <div class="hours-row">
+                <strong>Monday - Friday</strong>
+                <span>8:00 AM - 5:00 PM</span>
+              </div>
+              <div class="hours-row">
+                <strong>Saturday</strong>
+                <span>9:00 AM - 12:00 PM</span>
+              </div>
+              <div class="hours-row">
+                <strong>Sunday</strong>
+                <span>Closed</span>
+              </div>
+              <div class="hours-row">
+                <strong>Holidays</strong>
+                <span>Closed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="script.js"></script>
+</body>
+</html>

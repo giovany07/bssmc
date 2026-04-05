@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - BSSMC</title>
+  <link rel="icon" href="Assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .contact-card,
+    .contact-form-card,
+    .hours-card,
+    .faq-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.76));
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      border-radius: 30px;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(14px);
+    }
+
+    .contact-card {
+      padding: 26px 22px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .contact-icon {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 16px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: rgba(76, 175, 47, 0.10);
+    }
+
+    .contact-icon img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+
+    .contact-card p,
+    .contact-note,
+    .contact-social a,
+    .faq-card p,
+    .hours-card p {
+      color: var(--text-body);
+      line-height: 1.7;
+    }
+
+    .contact-note {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .contact-social {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .contact-social a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    .contact-main-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .contact-form-card,
+    .hours-card {
+      padding: 30px;
+    }
+
+    .contact-form-card .eyebrow,
+    .hours-card .eyebrow,
+    .faq-section .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .contact-form-card h2,
+    .hours-card h3,
+    .faq-section h2 {
+      margin-bottom: 12px;
+      color: var(--text-dark);
+    }
+
+    .contact-form-card p {
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(46, 125, 50, 0.12);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.92);
+      font-size: 15px;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 4px rgba(76, 175, 47, 0.10);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .form-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .form-note {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .hours-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .hours-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(76, 175, 47, 0.07);
+    }
+
+    .hours-item strong {
+      color: var(--text-dark);
+    }
+
+    .hours-item span {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .map-card {
+      margin-top: 28px;
+      overflow: hidden;
+      border-radius: 34px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.76));
+    }
+
+    .map-card img {
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .map-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 22px 24px;
+      flex-wrap: wrap;
+    }
+
+    .map-content h3 {
+      margin-bottom: 6px;
+      color: var(--text-dark);
+    }
+
+    .map-content p {
+      color: var(--text-body);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .faq-card {
+      padding: 24px;
+    }
+
+    .faq-card h4 {
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+
+    @media (max-width: 1024px) {
+      .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-main-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .contact-grid,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form-card,
+      .hours-card,
+      .faq-card {
+        padding: 22px 18px;
+      }
+
+      .hours-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .map-card img {
+        height: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-box">
+          <div class="page-hero-copy">
+            <div class="hero-badge">Contact BSSMC</div>
+            <h1>We’re here to help and answer your questions</h1>
+            <p>
+              Reach out to us for membership, products, services, or any concerns. Our team is ready to assist you.
+            </p>
+          </div>
+          <div class="page-hero-image">
+            <img src="Assets/Contact/contact-hero.jpg" alt="Contact BSSMC" onerror="this.src='https://via.placeholder.com/500x400?text=Contact+Us'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <img src="Assets/Contact/address-icon.png" alt="Address" onerror="this.src='https://via.placeholder.com/28x28?text=📍'">
+            </div>
+            <h3>Main Office</h3>
+            <p>Main Office Address<br>Benguet, Philippines</p>
+            <p class="contact-note">Visit us during office hours</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <img src="Assets/Contact/phone-icon.png" alt="Phone" onerror="this.src='https://via.placeholder.com/28x28?text=📞'">
+            </div>
+            <h3>Phone</h3>
+            <p>+63 946 237 9895</p>
+            <p>(074) 123-4567</p>
+            <p class="contact-note">Mon-Fri, 8:00 AM - 5:00 PM</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <img src="Assets/Contact/email-icon.png" alt="Email" onerror="this.src='https://via.placeholder.com/28x28?text=✉️'">
+            </div>
+            <h3>Email</h3>
+            <p>bokodspring@gmail.com</p>
+            <p>mainoffice@bssmc.com</p>
+            <p class="contact-note">We reply within 24 hours</p>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <img src="Assets/Contact/social-icon.png" alt="Social Media" onerror="this.src='https://via.placeholder.com/28x28?text=🌐'">
+            </div>
+            <h3>Follow Us</h3>
+            <div class="contact-social">
+              <a href="https://www.facebook.com/officialbokodsulphur" target="_blank" rel="noopener noreferrer">Facebook</a>
+              <a href="https://www.instagram.com/bokodspring15" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="https://www.youtube.com/@BokodSulphurSpringMultipurpose" target="_blank" rel="noopener noreferrer">YouTube</a>
+            </div>
+            <p class="contact-note">Stay updated on social media</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="container">
+        <div class="contact-main-grid">
+          <div class="contact-form-card">
+            <span class="eyebrow">Send a Message</span>
+            <h2>Let’s get in touch</h2>
+            <p>Have questions? Fill out the form below and we’ll respond as soon as possible.</p>
+
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Your Name *</label>
+                  <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                </div>
+
+                <div class="form-group">
+                  <label for="subject">Subject *</label>
+                  <select id="subject" name="subject" required>
+                    <option value="">Select a subject</option>
+                    <option value="membership">Membership Inquiry</option>
+                    <option value="products">Products Question</option>
+                    <option value="services">Services Information</option>
+                    <option value="loan">Loan Application</option>
+                    <option value="feedback">Feedback or Suggestion</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" required placeholder="Type your message here..."></textarea>
+              </div>
+
+              <div class="form-checkbox">
+                <input type="checkbox" id="copy" name="copy">
+                <label for="copy">Send a copy to my email</label>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width:100%; border:none;">Send Message</button>
+              <p class="form-note">* Required fields</p>
+            </form>
+          </div>
+
+          <div class="hours-card">
+            <span class="eyebrow">Office Hours</span>
+            <h3>Visit us during our working hours</h3>
+            <p>Our team is available to assist you during the following schedule.</p>
+
+            <div class="hours-list">
+              <div class="hours-item">
+                <strong>Monday - Friday</strong>
+                <span>8:00 AM - 5:00 PM</span>
+              </div>
+              <div class="hours-item">
+                <strong>Saturday</strong>
+                <span>9:00 AM - 12:00 PM</span>
+              </div>
+              <div class="hours-item">
+                <strong>Sunday</strong>
+                <span>Closed</span>
+              </div>
+              <div class="hours-item">
+                <strong>Public Holidays</strong>
+                <span>Closed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <img src="Assets/Contact/map-image.jpg" alt="Map to BSSMC Office" onerror="this.src='https://via.placeholder.com/1200x420?text=Google+Maps+Location+Coming+Soon'">
+          <div class="map-content">
+            <div>
+              <h3>Find Us Here</h3>
+              <p>Main Office Location, Benguet</p>
+            </div>
+            <a href="#" class="btn btn-primary">Get Directions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section faq-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">FAQs</span>
+          <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-card">
+            <h4>How do I become a member?</h4>
+            <p>Visit our main office during business hours with a valid ID and fill out a membership application form. You can also use the “Be a Member” page on our website.</p>
+          </div>
+
+          <div class="faq-card">
+            <h4>What are the requirements for a loan?</h4>
+            <p>Requirements may include a valid ID, proof of income, membership certificate, and a completed application form depending on the loan type.</p>
+          </div>
+
+          <div class="faq-card">
+            <h4>Do you deliver products?</h4>
+            <p>Yes, we offer delivery for bulk orders within serviceable areas. Delivery fees may apply depending on the location and order size.</p>
+          </div>
+
+          <div class="faq-card">
+            <h4>What are the sulfur spring entrance fees?</h4>
+            <p>Entrance fees vary for members and non-members. Members may enjoy discounted rates. Please contact us for updated rates.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="script.js"></script>
+</body>
+</html>

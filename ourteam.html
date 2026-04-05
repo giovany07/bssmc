@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Team - BSSMC</title>
+  <link rel="icon" href="Assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .message-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.82), rgba(238,247,238,0.88));
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      border-radius: 36px;
+      padding: 38px 34px;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(14px);
+      text-align: center;
+    }
+
+    .message-card .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .message-card h2 {
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+
+    .message-card p {
+      max-width: 820px;
+      margin: 0 auto;
+      color: var(--text-body);
+      line-height: 1.9;
+    }
+
+    .message-card .signature {
+      margin-top: 22px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .team-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.76));
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .member-image img {
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .member-info {
+      padding: 22px;
+      text-align: center;
+    }
+
+    .member-info h3 {
+      margin-bottom: 6px;
+      color: var(--text-dark);
+    }
+
+    .position {
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .term {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .staff-panel {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.76));
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      border-radius: 36px;
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .staff-card {
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(76, 175, 47, 0.07);
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      text-align: center;
+    }
+
+    .staff-card h4 {
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+
+    .staff-card p {
+      color: var(--text-body);
+    }
+
+    @media (max-width: 1100px) {
+      .team-grid,
+      .staff-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .team-grid,
+      .staff-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .message-card,
+      .staff-panel {
+        padding: 24px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-box">
+          <div class="page-hero-copy">
+            <div class="hero-badge">Our Team</div>
+            <h1>Dedicated leaders working together for the cooperative and the community</h1>
+            <p>
+              Meet the people behind BSSMC’s service, direction, and commitment to cooperative growth.
+            </p>
+          </div>
+          <div class="page-hero-image">
+            <img src="Assets/Team/team-hero.jpg" alt="BSSMC Team" onerror="this.src='https://via.placeholder.com/500x400?text=Our+Team'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="container">
+        <div class="message-card">
+          <span class="eyebrow">Message from the Chairman</span>
+          <h2>Leadership rooted in service and cooperation</h2>
+          <p>
+            “Our team is composed of dedicated individuals who work tirelessly to serve our members and community. Together, we strive to uphold the values of cooperation, integrity, and service that define BSSMC.”
+          </p>
+          <p class="signature">— Juan Dela Cruz, Chairman</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Board of Directors</span>
+          <h2>Guiding the cooperative with experience and commitment</h2>
+        </div>
+
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="member-image">
+              <img src="Assets/Team/chairman.jpg" alt="Juan Dela Cruz" onerror="this.src='https://via.placeholder.com/300x300?text=Chairman'">
+            </div>
+            <div class="member-info">
+              <h3>Juan Dela Cruz</h3>
+              <p class="position">Chairman</p>
+              <p class="term">Term: 2024-2026</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="member-image">
+              <img src="Assets/Team/vice-chairman.jpg" alt="Maria Santos" onerror="this.src='https://via.placeholder.com/300x300?text=Vice+Chairman'">
+            </div>
+            <div class="member-info">
+              <h3>Maria Santos</h3>
+              <p class="position">Vice Chairman</p>
+              <p class="term">Term: 2024-2026</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="member-image">
+              <img src="Assets/Team/secretary.jpg" alt="Pedro Reyes" onerror="this.src='https://via.placeholder.com/300x300?text=Secretary'">
+            </div>
+            <div class="member-info">
+              <h3>Pedro Reyes</h3>
+              <p class="position">Secretary</p>
+              <p class="term">Term: 2024-2026</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="member-image">
+              <img src="Assets/Team/treasurer.jpg" alt="Ana Gomez" onerror="this.src='https://via.placeholder.com/300x300?text=Treasurer'">
+            </div>
+            <div class="member-info">
+              <h3>Ana Gomez</h3>
+              <p class="position">Treasurer</p>
+              <p class="term">Term: 2024-2026</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="member-image">
+              <img src="Assets/Team/board-member1.jpg" alt="Jose Mendoza" onerror="this.src='https://via.placeholder.com/300x300?text=Board+Member'">
+            </div>
+            <div class="member-info">
+              <h3>Jose Mendoza</h3>
+              <p class="position">Board Member</p>
+              <p class="term">Term: 2024-2026</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="member-image">
+              <img src="Assets/Team/board-member2.jpg" alt="Luisa Fernandez" onerror="this.src='https://via.placeholder.com/300x300?text=Board+Member'">
+            </div>
+            <div class="member-info">
+              <h3>Luisa Fernandez</h3>
+              <p class="position">Board Member</p>
+              <p class="term">Term: 2024-2026</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="member-image">
+              <img src="Assets/Team/board-member3.jpg" alt="Carlos Torres" onerror="this.src='https://via.placeholder.com/300x300?text=Board+Member'">
+            </div>
+            <div class="member-info">
+              <h3>Carlos Torres</h3>
+              <p class="position">Board Member</p>
+              <p class="term">Term: 2024-2026</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="member-image">
+              <img src="Assets/Team/board-member4.jpg" alt="Elena Villanueva" onerror="this.src='https://via.placeholder.com/300x300?text=Board+Member'">
+            </div>
+            <div class="member-info">
+              <h3>Elena Villanueva</h3>
+              <p class="position">Board Member</p>
+              <p class="term">Term: 2024-2026</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Management Team</span>
+          <h2>Supporting operations with leadership and expertise</h2>
+        </div>
+
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="member-image">
+              <img src="Assets/Team/manager.jpg" alt="Ricardo Lopez" onerror="this.src='https://via.placeholder.com/300x300?text=General+Manager'">
+            </div>
+            <div class="member-info">
+              <h3>Ricardo Lopez</h3>
+              <p class="position">General Manager</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="member-image">
+              <img src="Assets/Team/asst-manager.jpg" alt="Sofia Ramirez" onerror="this.src='https://via.placeholder.com/300x300?text=Assistant+Manager'">
+            </div>
+            <div class="member-info">
+              <h3>Sofia Ramirez</h3>
+              <p class="position">Assistant Manager</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="member-image">
+              <img src="Assets/Team/finance-officer.jpg" alt="Miguel Garcia" onerror="this.src='https://via.placeholder.com/300x300?text=Finance+Officer'">
+            </div>
+            <div class="member-info">
+              <h3>Miguel Garcia</h3>
+              <p class="position">Finance Officer</p>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="member-image">
+              <img src="Assets/Team/marketing-officer.jpg" alt="Carla Jimenez" onerror="this.src='https://via.placeholder.com/300x300?text=Marketing+Officer'">
+            </div>
+            <div class="member-info">
+              <h3>Carla Jimenez</h3>
+              <p class="position">Marketing Officer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="container">
+        <div class="staff-panel">
+          <div class="section-heading" style="margin-bottom: 28px;">
+            <span class="eyebrow">Administrative Staff</span>
+            <h2>Helping keep the cooperative running smoothly every day</h2>
+          </div>
+
+          <div class="staff-grid">
+            <div class="staff-card">
+              <h4>Kristine Flores</h4>
+              <p>Administrative Assistant</p>
+            </div>
+            <div class="staff-card">
+              <h4>Mark Anthony Cruz</h4>
+              <p>Bookkeeper</p>
+            </div>
+            <div class="staff-card">
+              <h4>Patricia Santos</h4>
+              <p>Member Services Representative</p>
+            </div>
+            <div class="staff-card">
+              <h4>Daniel Roxas</h4>
+              <p>IT Support</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="script.js"></script>
+</body>
+</html>

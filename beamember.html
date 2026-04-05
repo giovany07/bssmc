@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be a Member - BSSMC</title>
+  <link rel="icon" href="Assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .membership-wrapper {
+      display: grid;
+      gap: 28px;
+    }
+
+    .membership-info-banner,
+    .membership-form-card,
+    .membership-notes-card,
+    .fee-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.78));
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      border-radius: 34px;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(14px);
+    }
+
+    .membership-info-banner,
+    .membership-form-card,
+    .membership-notes-card {
+      padding: 30px;
+    }
+
+    .membership-info-banner h2,
+    .membership-form-card h2,
+    .membership-notes-card h2,
+    .fee-card h3 {
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .membership-info-banner p,
+    .membership-form-card p,
+    .membership-notes-card p,
+    .membership-notes-card li,
+    .fee-card p,
+    .fee-card li {
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+
+    .membership-eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .membership-grid-2,
+    .membership-grid-3,
+    .membership-grid-4,
+    .membership-grid-5 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .membership-grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .membership-grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .membership-grid-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .membership-grid-5 {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .membership-section + .membership-section {
+      margin-top: 30px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(46, 125, 50, 0.08);
+    }
+
+    .membership-section-title {
+      margin-bottom: 18px;
+    }
+
+    .membership-section-title h3 {
+      color: var(--text-dark);
+      margin-bottom: 6px;
+      font-size: 1.3rem;
+    }
+
+    .membership-section-title p {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(46, 125, 50, 0.12);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.95);
+      font-size: 15px;
+      color: var(--text-dark);
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 4px rgba(76, 175, 47, 0.10);
+    }
+
+    .form-check-group {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 18px;
+      padding: 14px 16px;
+      border: 1px solid rgba(46, 125, 50, 0.12);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .form-check-group label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-body);
+      line-height: 1.5;
+      cursor: pointer;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .form-check-group input[type="radio"],
+    .form-check-group input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      margin: 2px 0 0;
+      flex: 0 0 16px;
+      padding: 0;
+      accent-color: #4caf2f;
+    }
+
+    .person-block,
+    .upload-block {
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      border-radius: 26px;
+      padding: 18px;
+      background: rgba(76, 175, 47, 0.04);
+    }
+
+    .person-block + .person-block,
+    .upload-block + .upload-block {
+      margin-top: 14px;
+    }
+
+    .person-block h4,
+    .upload-block h4 {
+      margin-bottom: 14px;
+      color: var(--text-dark);
+      font-size: 1.05rem;
+    }
+
+    .rules-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+      padding-left: 18px;
+      list-style: disc;
+    }
+
+    .fees-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .fee-card {
+      padding: 24px;
+    }
+
+    .fee-card ul {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+      padding-left: 18px;
+      list-style: disc;
+    }
+
+    .agreement-box {
+      padding: 20px;
+      border-radius: 26px;
+      background: rgba(76, 175, 47, 0.06);
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      margin-top: 18px;
+    }
+
+    .agreement-box label {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+
+    .upload-note,
+    .upload-limit-note {
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .form-actions {
+      margin-top: 28px;
+    }
+
+    .form-note {
+      margin-top: 12px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .error-message {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(220, 38, 38, 0.08);
+      color: #b91c1c;
+      font-size: 14px;
+      line-height: 1.6;
+      display: none;
+    }
+
+    .success-hint {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(76, 175, 47, 0.08);
+      color: var(--primary);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .step-card {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(46, 125, 50, 0.08);
+    }
+
+    .ref-readonly {
+      background: rgba(240, 245, 240, 0.95) !important;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .important-notice-card {
+      background: linear-gradient(135deg, rgba(76, 175, 47, 0.12), rgba(255, 255, 255, 0.95));
+      border: 2px solid rgba(76, 175, 47, 0.22);
+      border-radius: 34px;
+      box-shadow: 0 18px 40px rgba(46, 125, 50, 0.12);
+      padding: 30px;
+    }
+
+    .important-notice-card h2 {
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .important-notice-card p {
+      color: var(--text-body);
+      line-height: 1.85;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 1200px) {
+      .membership-grid-5 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .membership-grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .membership-grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .membership-grid-2,
+      .membership-grid-3,
+      .membership-grid-4,
+      .membership-grid-5,
+      .fees-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-check-group {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 14px;
+      }
+
+      .form-check-group label {
+        align-items: flex-start;
+        font-size: 14px;
+      }
+
+      .membership-info-banner,
+      .membership-form-card,
+      .membership-notes-card,
+      .fee-card,
+      .important-notice-card,
+      .person-block,
+      .upload-block,
+      .agreement-box {
+        padding: 22px 18px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .membership-section-title h3 {
+        font-size: 1.12rem;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        font-size: 16px;
+        padding: 14px;
+      }
+
+      .upload-note,
+      .upload-limit-note,
+      .form-note {
+        font-size: 12.5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-box">
+          <div class="page-hero-copy">
+            <div class="hero-badge">Membership Application</div>
+            <h1>Become a member of BSSMC</h1>
+            <p>
+              Complete the membership form below using the required applicant, address, family, and supporting information.
+            </p>
+          </div>
+          <div class="page-hero-image">
+            <img src="Assets/Membership/membership-hero.jpg" alt="BSSMC Membership">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="container">
+        <div class="membership-wrapper">
+
+          <div class="membership-info-banner">
+            <span class="membership-eyebrow">Before You Apply</span>
+            <h2>Membership requirements and conditions</h2>
+            <p>
+              Please complete all required details and prepare your supporting documents before submitting your application.
+            </p>
+          </div>
+
+          <div class="membership-form-card">
+            <span class="membership-eyebrow">Application Form</span>
+            <h2>BSSMC Membership Application</h2>
+            <p>Fill out all required fields as completely and accurately as possible.</p>
+            <p class="upload-limit-note">Note: Keep each upload form under 8MB total.</p>
+
+            <div style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; opacity:0; pointer-events:none;">
+              <form name="membership-main" data-netlify="true" netlify>
+                <input type="hidden" name="form-name" value="membership-main">
+                <input type="text" name="application_reference">
+                <input type="text" name="pmes_date">
+                <input type="text" name="application_date">
+                <input type="text" name="applicant_name">
+                <input type="text" name="resident_of">
+                <input type="text" name="last_name">
+                <input type="text" name="first_name">
+                <input type="text" name="middle_name">
+                <input type="text" name="suffix">
+                <input type="text" name="birth_date">
+                <input type="text" name="birth_hospital">
+                <input type="text" name="birth_city">
+                <input type="text" name="birth_province">
+                <input type="text" name="age">
+                <input type="text" name="gender">
+                <input type="text" name="religion">
+                <input type="text" name="nationality">
+                <input type="text" name="civil_status">
+                <input type="text" name="civil_status_other">
+                <input type="text" name="tin">
+                <input type="text" name="profession">
+                <input type="text" name="contact_number">
+                <input type="text" name="email">
+                <input type="text" name="other_contact">
+                <input type="text" name="monthly_income">
+                <input type="text" name="weight">
+                <input type="text" name="height">
+                <input type="text" name="blood_type">
+                <input type="text" name="present_house_no">
+                <input type="text" name="present_sitio">
+                <input type="text" name="present_barangay">
+                <input type="text" name="present_municipality">
+                <input type="text" name="present_province">
+                <input type="text" name="present_type">
+                <input type="text" name="present_since">
+                <input type="text" name="present_zip">
+                <input type="text" name="provincial_house_no">
+                <input type="text" name="provincial_sitio">
+                <input type="text" name="provincial_barangay">
+                <input type="text" name="provincial_municipality">
+                <input type="text" name="provincial_province">
+                <input type="text" name="provincial_type">
+                <input type="text" name="provincial_since">
+                <input type="text" name="provincial_zip">
+                <input type="text" name="business_sitio">
+                <input type="text" name="business_barangay">
+                <input type="text" name="business_municipality">
+                <input type="text" name="business_province">
+                <input type="text" name="business_type">
+                <input type="text" name="business_since">
+                <input type="text" name="business_zip">
+                <input type="text" name="preferred_mailing">
+                <input type="text" name="preferred_mailing_other">
+                <input type="text" name="spouse_name">
+                <input type="text" name="spouse_gender">
+                <input type="text" name="spouse_birthdate">
+                <input type="text" name="spouse_occupation">
+                <input type="text" name="spouse_type">
+                <input type="text" name="father_name">
+                <input type="text" name="father_birthdate">
+                <input type="text" name="father_occupation">
+                <input type="text" name="mother_name">
+                <input type="text" name="mother_birthdate">
+                <input type="text" name="mother_occupation">
+                <input type="text" name="contact_person_name">
+                <input type="text" name="contact_person_relationship">
+                <input type="text" name="contact_person_address">
+                <input type="text" name="contact_person_number">
+              </form>
+
+              <form name="membership-gov-id" data-netlify="true" netlify enctype="multipart/form-data">
+                <input type="hidden" name="form-name" value="membership-gov-id">
+                <input type="text" name="application_reference">
+                <input type="text" name="applicant_name">
+                <input type="file" name="gov_id_1">
+                <input type="file" name="gov_id_2">
+              </form>
+
+              <form name="membership-psa" data-netlify="true" netlify enctype="multipart/form-data">
+                <input type="hidden" name="form-name" value="membership-psa">
+                <input type="text" name="application_reference">
+                <input type="text" name="applicant_name">
+                <input type="file" name="psa_1">
+                <input type="file" name="psa_2">
+                <input type="file" name="psa_3">
+              </form>
+
+              <form name="membership-barangay" data-netlify="true" netlify enctype="multipart/form-data">
+                <input type="hidden" name="form-name" value="membership-barangay">
+                <input type="text" name="application_reference">
+                <input type="text" name="applicant_name">
+                <input type="file" name="barangay_clearance_1">
+                <input type="file" name="barangay_clearance_2">
+              </form>
+
+              <form name="membership-photos-signature" data-netlify="true" netlify enctype="multipart/form-data">
+                <input type="hidden" name="form-name" value="membership-photos-signature">
+                <input type="text" name="application_reference">
+                <input type="text" name="applicant_name">
+                <input type="file" name="id_pic_1">
+                <input type="file" name="id_pic_2">
+                <input type="file" name="signature_upload_1">
+              </form>
+            </div>
+
+            <form id="memberMainForm" name="membership-main" method="POST" data-netlify="true" netlify>
+              <input type="hidden" name="form-name" value="membership-main">
+
+              <div class="membership-section">
+                <div class="membership-section-title">
+                  <h3>Step 1 — Main Applicant Details</h3>
+                  <p>Submit all written information first before uploading documents.</p>
+                </div>
+
+                <div class="membership-grid-2">
+                  <div class="form-group">
+                    <label for="application_reference_main">Application Reference Number *</label>
+                    <input
+                      type="text"
+                      id="application_reference_main"
+                      name="application_reference"
+                      class="ref-readonly"
+                      readonly
+                      required
+                      inputmode="numeric"
+                      maxlength="6"
+                      pattern="[0-9]{6}"
+                    >
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pmes_date">Date of PMES</label>
+                    <input type="date" id="pmes_date" name="pmes_date">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="application_date">Application Date</label>
+                    <input type="date" id="application_date" name="application_date">
+                  </div>
+
+                  <div class="form-group full">
+                    <label for="applicant_name">Full Name *</label>
+                    <input type="text" id="applicant_name" name="applicant_name" required>
+                  </div>
+
+                  <div class="form-group full">
+                    <label for="resident_of">Resident of *</label>
+                    <input type="text" id="resident_of" name="resident_of" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="membership-section">
+                <div class="membership-section-title">
+                  <h3>Personal Data Information</h3>
+                  <p>Applicant’s personal information.</p>
+                </div>
+
+                <div class="membership-grid-4">
+                  <div class="form-group">
+                    <label for="last_name">Last Name *</label>
+                    <input type="text" id="last_name" name="last_name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="first_name">First Name *</label>
+                    <input type="text" id="first_name" name="first_name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="middle_name">Middle Name</label>
+                    <input type="text" id="middle_name" name="middle_name">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="suffix">Suffix</label>
+                    <input type="text" id="suffix" name="suffix">
+                  </div>
+                </div>
+
+                <div class="membership-grid-4" style="margin-top:18px;">
+                  <div class="form-group">
+                    <label for="birth_date">Date of Birth *</label>
+                    <input type="date" id="birth_date" name="birth_date" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="birth_hospital">Place of Birth - Name of Hospital</label>
+                    <input type="text" id="birth_hospital" name="birth_hospital">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="birth_city">Place of Birth - City/Municipality</label>
+                    <input type="text" id="birth_city" name="birth_city">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="birth_province">Place of Birth - Province</label>
+                    <input type="text" id="birth_province" name="birth_province">
+                  </div>
+                </div>
+
+                <div class="membership-grid-4" style="margin-top:18px;">
+                  <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" min="0">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Gender</label>
+                    <div class="form-check-group">
+                      <label><input type="radio" name="gender" value="male"> Male</label>
+                      <label><input type="radio" name="gender" value="female"> Female</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="religion">Religion</label>
+                    <input type="text" id="religion" name="religion">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="nationality">Nationality</label>
+                    <input type="text" id="nationality" name="nationality">
+                  </div>
+                </div>
+
+                <div class="membership-grid-4" style="margin-top:18px;">
+                  <div class="form-group">
+                    <label for="civil_status">Civil Status</label>
+                    <select id="civil_status" name="civil_status">
+                      <option value="">Select one</option>
+                      <option value="single">Single</option>
+                      <option value="married">Married</option>
+                      <option value="legally_separated">Legally Separated</option>
+                      <option value="widowed">Widowed</option>
+                      <option value="others">Others</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group" id="civil_status_other_group">
+                    <label for="civil_status_other">If Others, please specify</label>
+                    <input type="text" id="civil_status_other" name="civil_status_other">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="tin">TIN</label>
+                    <input type="text" id="tin" name="tin">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="profession">Profession</label>
+                    <input type="text" id="profession" name="profession">
+                  </div>
+                </div>
+
+                <div class="membership-grid-4" style="margin-top:18px;">
+                  <div class="form-group">
+                    <label for="contact_number">Contact Number *</label>
+                    <input type="tel" id="contact_number" name="contact_number" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="other_contact">Other Contact Number (if any)</label>
+                    <input type="tel" id="other_contact" name="other_contact">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="monthly_income">Monthly Income</label>
+                    <input type="text" id="monthly_income" name="monthly_income">
+                  </div>
+                </div>
+
+                <div class="membership-grid-4" style="margin-top:18px;">
+                  <div class="form-group">
+                    <label for="weight">Weight</label>
+                    <input type="text" id="weight" name="weight">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="height">Height</label>
+                    <input type="text" id="height" name="height">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="blood_type">Blood Type</label>
+                    <input type="text" id="blood_type" name="blood_type">
+                  </div>
+                </div>
+              </div>
+
+              <div class="membership-section">
+                <div class="membership-section-title">
+                  <h3>Present Address</h3>
+                  <p>Current residential address details.</p>
+                </div>
+
+                <div class="membership-grid-5">
+                  <div class="form-group">
+                    <label for="present_house_no">House No.</label>
+                    <input type="text" id="present_house_no" name="present_house_no">
+                  </div>
+                  <div class="form-group">
+                    <label for="present_sitio">Sitio</label>
+                    <input type="text" id="present_sitio" name="present_sitio">
+                  </div>
+                  <div class="form-group">
+                    <label for="present_barangay">Barangay</label>
+                    <input type="text" id="present_barangay" name="present_barangay">
+                  </div>
+                  <div class="form-group">
+                    <label for="present_municipality">Municipality</label>
+                    <input type="text" id="present_municipality" name="present_municipality">
+                  </div>
+                  <div class="form-group">
+                    <label for="present_province">Province</label>
+                    <input type="text" id="present_province" name="present_province">
+                  </div>
+                </div>
+
+                <div class="membership-grid-3" style="margin-top:18px;">
+                  <div class="form-group">
+                    <label for="present_type">Address Type</label>
+                    <input type="text" id="present_type" name="present_type">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="present_since">Since (Year)</label>
+                    <input type="text" id="present_since" name="present_since">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="present_zip">Zip Code</label>
+                    <input type="text" id="present_zip" name="present_zip">
+                  </div>
+                </div>
+              </div>
+
+              <div class="membership-section">
+                <div class="membership-section-title">
+                  <h3>Provincial Address</h3>
+                  <p>Permanent or provincial address details.</p>
+                </div>
+
+                <div class="membership-grid-5">
+                  <div class="form-group">
+                    <label for="provincial_house_no">House No.</label>
+                    <input type="text" id="provincial_house_no" name="provincial_house_no">
+                  </div>
+                  <div class="form-group">
+                    <label for="provincial_sitio">Sitio</label>
+                    <input type="text" id="provincial_sitio" name="provincial_sitio">
+                  </div>
+                  <div class="form-group">
+                    <label for="provincial_barangay">Barangay</label>
+                    <input type="text" id="provincial_barangay" name="provincial_barangay">
+                  </div>
+                  <div class="form-group">
+                    <label for="provincial_municipality">Municipality</label>
+                    <input type="text" id="provincial_municipality" name="provincial_municipality">
+                  </div>
+                  <div class="form-group">
+                    <label for="provincial_province">Province</label>
+                    <input type="text" id="provincial_province" name="provincial_province">
+                  </div>
+                </div>
+
+                <div class="membership-grid-3" style="margin-top:18px;">
+                  <div class="form-group">
+                    <label for="provincial_type">Address Type</label>
+                    <input type="text" id="provincial_type" name="provincial_type">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="provincial_since">Since (Year)</label>
+                    <input type="text" id="provincial_since" name="provincial_since">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="provincial_zip">Zip Code</label>
+                    <input type="text" id="provincial_zip" name="provincial_zip">
+                  </div>
+                </div>
+              </div>
+
+              <div class="membership-section">
+                <div class="membership-section-title">
+                  <h3>Business / Employment Address</h3>
+                  <p>Business or employment-related address details.</p>
+                </div>
+
+                <div class="membership-grid-4">
+                  <div class="form-group">
+                    <label for="business_sitio">Sitio</label>
+                    <input type="text" id="business_sitio" name="business_sitio">
+                  </div>
+                  <div class="form-group">
+                    <label for="business_barangay">Barangay</label>
+                    <input type="text" id="business_barangay" name="business_barangay">
+                  </div>
+                  <div class="form-group">
+                    <label for="business_municipality">Municipality</label>
+                    <input type="text" id="business_municipality" name="business_municipality">
+                  </div>
+                  <div class="form-group">
+                    <label for="business_province">Province</label>
+                    <input type="text" id="business_province" name="business_province">
+                  </div>
+                </div>
+
+                <div class="membership-grid-3" style="margin-top:18px;">
+                  <div class="form-group">
+                    <label for="business_type">Address Type</label>
+                    <input type="text" id="business_type" name="business_type">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="business_since">Since (Year)</label>
+                    <input type="text" id="business_since" name="business_since">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="business_zip">Zip Code</label>
+                    <input type="text" id="business_zip" name="business_zip">
+                  </div>
+                </div>
+              </div>
+
+              <div class="membership-section">
+                <div class="membership-section-title">
+                  <h3>Preferred Mailing Address</h3>
+                  <p>Select the preferred mailing address.</p>
+                </div>
+
+                <div class="membership-grid-2">
+                  <div class="form-group">
+                    <label>Preferred Mailing Address</label>
+                    <div class="form-check-group">
+                      <label><input type="radio" name="preferred_mailing" value="present"> Residence/Present</label>
+                      <label><input type="radio" name="preferred_mailing" value="provincial"> Permanent/Provincial</label>
+                      <label><input type="radio" name="preferred_mailing" value="business"> Business</label>
+                      <label><input type="radio" name="preferred_mailing" value="employment"> Employment</label>
+                      <label><input type="radio" name="preferred_mailing" value="spouse"> Spouse</label>
+                      <label><input type="radio" name="preferred_mailing" value="others"> Others</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="preferred_mailing_other">If Others, please specify</label>
+                    <input type="text" id="preferred_mailing_other" name="preferred_mailing_other">
+                  </div>
+                </div>
+              </div>
+
+              <div class="membership-section">
+                <div class="membership-section-title">
+                  <h3>Heirs / Beneficiaries</h3>
+                  <p>Spouse, children, and siblings information.</p>
+                </div>
+
+                <div class="person-block">
+                  <h4>Name of Spouse (if married)</h4>
+                  <div class="membership-grid-5">
+                    <div class="form-group">
+                      <label for="spouse_name">Full Name</label>
+                      <input type="text" id="spouse_name" name="spouse_name">
+                    </div>
+                    <div class="form-group">
+                      <label for="spouse_gender">Gender</label>
+                      <input type="text" id="spouse_gender" name="spouse_gender">
+                    </div>
+                    <div class="form-group">
+                      <label for="spouse_birthdate">Birthdate</label>
+                      <input type="date" id="spouse_birthdate" name="spouse_birthdate">
+                    </div>
+                    <div class="form-group">
+                      <label for="spouse_occupation">Occupation</label>
+                      <input type="text" id="spouse_occupation" name="spouse_occupation">
+                    </div>
+                    <div class="form-group">
+                      <label for="spouse_type">Type</label>
+                      <select id="spouse_type" name="spouse_type">
+                        <option value="">Select one</option>
+                        <option value="principal">Principal</option>
+                        <option value="secondary">Secondary</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="person-block">
+                  <h4>Name of Children (if applicable)</h4>
+
+                  <div class="membership-grid-5">
+                    <div class="form-group"><label for="child_name_1">1. Full Name</label><input type="text" id="child_name_1" name="child_name_1"></div>
+                    <div class="form-group"><label for="child_gender_1">Gender</label><input type="text" id="child_gender_1" name="child_gender_1"></div>
+                    <div class="form-group"><label for="child_birthdate_1">Birthdate</label><input type="date" id="child_birthdate_1" name="child_birthdate_1"></div>
+                    <div class="form-group"><label for="child_occupation_1">Occupation</label><input type="text" id="child_occupation_1" name="child_occupation_1"></div>
+                    <div class="form-group"><label for="child_type_1">Type</label><select id="child_type_1" name="child_type_1"><option value=""></option><option value="principal">Principal</option><option value="secondary">Secondary</option></select></div>
+                  </div>
+
+                  <div class="membership-grid-5" style="margin-top:14px;">
+                    <div class="form-group"><label for="child_name_2">2. Full Name</label><input type="text" id="child_name_2" name="child_name_2"></div>
+                    <div class="form-group"><label for="child_gender_2">Gender</label><input type="text" id="child_gender_2" name="child_gender_2"></div>
+                    <div class="form-group"><label for="child_birthdate_2">Birthdate</label><input type="date" id="child_birthdate_2" name="child_birthdate_2"></div>
+                    <div class="form-group"><label for="child_occupation_2">Occupation</label><input type="text" id="child_occupation_2" name="child_occupation_2"></div>
+                    <div class="form-group"><label for="child_type_2">Type</label><select id="child_type_2" name="child_type_2"><option value=""></option><option value="principal">Principal</option><option value="secondary">Secondary</option></select></div>
+                  </div>
+
+                  <div class="membership-grid-5" style="margin-top:14px;">
+                    <div class="form-group"><label for="child_name_3">3. Full Name</label><input type="text" id="child_name_3" name="child_name_3"></div>
+                    <div class="form-group"><label for="child_gender_3">Gender</label><input type="text" id="child_gender_3" name="child_gender_3"></div>
+                    <div class="form-group"><label for="child_birthdate_3">Birthdate</label><input type="date" id="child_birthdate_3" name="child_birthdate_3"></div>
+                    <div class="form-group"><label for="child_occupation_3">Occupation</label><input type="text" id="child_occupation_3" name="child_occupation_3"></div>
+                    <div class="form-group"><label for="child_type_3">Type</label><select id="child_type_3" name="child_type_3"><option value=""></option><option value="principal">Principal</option><option value="secondary">Secondary</option></select></div>
+                  </div>
+
+                  <div class="membership-grid-5" style="margin-top:14px;">
+                    <div class="form-group"><label for="child_name_4">4. Full Name</label><input type="text" id="child_name_4" name="child_name_4"></div>
+                    <div class="form-group"><label for="child_gender_4">Gender</label><input type="text" id="child_gender_4" name="child_gender_4"></div>
+                    <div class="form-group"><label for="child_birthdate_4">Birthdate</label><input type="date" id="child_birthdate_4" name="child_birthdate_4"></div>
+                    <div class="form-group"><label for="child_occupation_4">Occupation</label><input type="text" id="child_occupation_4" name="child_occupation_4"></div>
+                    <div class="form-group"><label for="child_type_4">Type</label><select id="child_type_4" name="child_type_4"><option value=""></option><option value="principal">Principal</option><option value="secondary">Secondary</option></select></div>
+                  </div>
+
+                  <div class="membership-grid-5" style="margin-top:14px;">
+                    <div class="form-group"><label for="child_name_5">5. Full Name</label><input type="text" id="child_name_5" name="child_name_5"></div>
+                    <div class="form-group"><label for="child_gender_5">Gender</label><input type="text" id="child_gender_5" name="child_gender_5"></div>
+                    <div class="form-group"><label for="child_birthdate_5">Birthdate</label><input type="date" id="child_birthdate_5" name="child_birthdate_5"></div>
+                    <div class="form-group"><label for="child_occupation_5">Occupation</label><input type="text" id="child_occupation_5" name="child_occupation_5"></div>
+                    <div class="form-group"><label for="child_type_5">Type</label><select id="child_type_5" name="child_type_5"><option value=""></option><option value="principal">Principal</option><option value="secondary">Secondary</option></select></div>
+                  </div>
+                </div>
+
+                <div class="person-block">
+                  <h4>Name of Siblings (if unmarried)</h4>
+
+                  <div class="membership-grid-5">
+                    <div class="form-group"><label for="sibling_name_1">1. Full Name</label><input type="text" id="sibling_name_1" name="sibling_name_1"></div>
+                    <div class="form-group"><label for="sibling_gender_1">Gender</label><input type="text" id="sibling_gender_1" name="sibling_gender_1"></div>
+                    <div class="form-group"><label for="sibling_birthdate_1">Birthdate</label><input type="date" id="sibling_birthdate_1" name="sibling_birthdate_1"></div>
+                    <div class="form-group"><label for="sibling_occupation_1">Occupation</label><input type="text" id="sibling_occupation_1" name="sibling_occupation_1"></div>
+                    <div class="form-group"><label for="sibling_type_1">Type</label><select id="sibling_type_1" name="sibling_type_1"><option value=""></option><option value="principal">Principal</option><option value="secondary">Secondary</option></select></div>
+                  </div>
+
+                  <div class="membership-grid-5" style="margin-top:14px;">
+                    <div class="form-group"><label for="sibling_name_2">2. Full Name</label><input type="text" id="sibling_name_2" name="sibling_name_2"></div>
+                    <div class="form-group"><label for="sibling_gender_2">Gender</label><input type="text" id="sibling_gender_2" name="sibling_gender_2"></div>
+                    <div class="form-group"><label for="sibling_birthdate_2">Birthdate</label><input type="date" id="sibling_birthdate_2" name="sibling_birthdate_2"></div>
+                    <div class="form-group"><label for="sibling_occupation_2">Occupation</label><input type="text" id="sibling_occupation_2" name="sibling_occupation_2"></div>
+                    <div class="form-group"><label for="sibling_type_2">Type</label><select id="sibling_type_2" name="sibling_type_2"><option value=""></option><option value="principal">Principal</option><option value="secondary">Secondary</option></select></div>
+                  </div>
+
+                  <div class="membership-grid-5" style="margin-top:14px;">
+                    <div class="form-group"><label for="sibling_name_3">3. Full Name</label><input type="text" id="sibling_name_3" name="sibling_name_3"></div>
+                    <div class="form-group"><label for="sibling_gender_3">Gender</label><input type="text" id="sibling_gender_3" name="sibling_gender_3"></div>
+                    <div class="form-group"><label for="sibling_birthdate_3">Birthdate</label><input type="date" id="sibling_birthdate_3" name="sibling_birthdate_3"></div>
+                    <div class="form-group"><label for="sibling_occupation_3">Occupation</label><input type="text" id="sibling_occupation_3" name="sibling_occupation_3"></div>
+                    <div class="form-group"><label for="sibling_type_3">Type</label><select id="sibling_type_3" name="sibling_type_3"><option value=""></option><option value="principal">Principal</option><option value="secondary">Secondary</option></select></div>
+                  </div>
+
+                  <div class="membership-grid-5" style="margin-top:14px;">
+                    <div class="form-group"><label for="sibling_name_4">4. Full Name</label><input type="text" id="sibling_name_4" name="sibling_name_4"></div>
+                    <div class="form-group"><label for="sibling_gender_4">Gender</label><input type="text" id="sibling_gender_4" name="sibling_gender_4"></div>
+                    <div class="form-group"><label for="sibling_birthdate_4">Birthdate</label><input type="date" id="sibling_birthdate_4" name="sibling_birthdate_4"></div>
+                    <div class="form-group"><label for="sibling_occupation_4">Occupation</label><input type="text" id="sibling_occupation_4" name="sibling_occupation_4"></div>
+                    <div class="form-group"><label for="sibling_type_4">Type</label><select id="sibling_type_4" name="sibling_type_4"><option value=""></option><option value="principal">Principal</option><option value="secondary">Secondary</option></select></div>
+                  </div>
+
+                  <div class="membership-grid-5" style="margin-top:14px;">
+                    <div class="form-group"><label for="sibling_name_5">5. Full Name</label><input type="text" id="sibling_name_5" name="sibling_name_5"></div>
+                    <div class="form-group"><label for="sibling_gender_5">Gender</label><input type="text" id="sibling_gender_5" name="sibling_gender_5"></div>
+                    <div class="form-group"><label for="sibling_birthdate_5">Birthdate</label><input type="date" id="sibling_birthdate_5" name="sibling_birthdate_5"></div>
+                    <div class="form-group"><label for="sibling_occupation_5">Occupation</label><input type="text" id="sibling_occupation_5" name="sibling_occupation_5"></div>
+                    <div class="form-group"><label for="sibling_type_5">Type</label><select id="sibling_type_5" name="sibling_type_5"><option value=""></option><option value="principal">Principal</option><option value="secondary">Secondary</option></select></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="membership-section">
+                <div class="membership-section-title">
+                  <h3>Parents' Information and Contact Person</h3>
+                  <p>Parent details and a contact person.</p>
+                </div>
+
+                <div class="membership-grid-3">
+                  <div class="form-group">
+                    <label for="father_name">Father’s Name</label>
+                    <input type="text" id="father_name" name="father_name">
+                  </div>
+                  <div class="form-group">
+                    <label for="father_birthdate">Father’s Date of Birth</label>
+                    <input type="date" id="father_birthdate" name="father_birthdate">
+                  </div>
+                  <div class="form-group">
+                    <label for="father_occupation">Father’s Occupation</label>
+                    <input type="text" id="father_occupation" name="father_occupation">
+                  </div>
+                </div>
+
+                <div class="membership-grid-3" style="margin-top:18px;">
+                  <div class="form-group">
+                    <label for="mother_name">Mother’s Maiden Name</label>
+                    <input type="text" id="mother_name" name="mother_name">
+                  </div>
+                  <div class="form-group">
+                    <label for="mother_birthdate">Mother’s Date of Birth</label>
+                    <input type="date" id="mother_birthdate" name="mother_birthdate">
+                  </div>
+                  <div class="form-group">
+                    <label for="mother_occupation">Mother’s Occupation</label>
+                    <input type="text" id="mother_occupation" name="mother_occupation">
+                  </div>
+                </div>
+
+                <div class="membership-grid-2" style="margin-top:18px;">
+                  <div class="form-group">
+                    <label for="contact_person_name">Contact Person Name</label>
+                    <input type="text" id="contact_person_name" name="contact_person_name">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact_person_relationship">Relationship</label>
+                    <input type="text" id="contact_person_relationship" name="contact_person_relationship">
+                  </div>
+
+                  <div class="form-group full">
+                    <label for="contact_person_address">Contact Person Address</label>
+                    <input type="text" id="contact_person_address" name="contact_person_address">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact_person_number">Contact Person Number</label>
+                    <input type="tel" id="contact_person_number" name="contact_person_number">
+                  </div>
+                </div>
+              </div>
+
+              <div class="membership-section">
+                <div class="membership-section-title">
+                  <h3>Applicant Certification and Agreement</h3>
+                  <p>Please review and confirm the statements below.</p>
+                </div>
+
+                <div class="agreement-box">
+                  <label>
+                    <input type="checkbox" required>
+                    <span>I certify that the information I provided is true and correct to the best of my knowledge.</span>
+                  </label>
+
+                  <label style="margin-top:14px;">
+                    <input type="checkbox" required>
+                    <span>I understand and agree to abide by the cooperative’s rules, by-laws, policies, attendance obligations, and membership conditions.</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="error-message" id="memberMainFormError"></div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" style="width:100%; border:none;">
+                  Submit Step 1 — Main Application Details
+                </button>
+                <p class="form-note">Please submit this first before proceeding to document uploads.</p>
+              </div>
+            </form>
+
+            <form id="memberGovIdForm" name="membership-gov-id" method="POST" data-netlify="true" netlify enctype="multipart/form-data" class="step-card">
+              <input type="hidden" name="form-name" value="membership-gov-id">
+
+              <div class="membership-section-title">
+                <h3>Step 2 — Government-Issued Identification</h3>
+                <p>Upload only government-issued IDs in this section.</p>
+              </div>
+
+              <div class="upload-block">
+                <h4>Government-Issued Identification</h4>
+                <div class="membership-grid-2">
+                  <div class="form-group">
+                    <label for="application_reference_gov">Application Reference Number *</label>
+                    <input
+                      type="text"
+                      id="application_reference_gov"
+                      name="application_reference"
+                      class="ref-readonly"
+                      readonly
+                      required
+                      inputmode="numeric"
+                      maxlength="6"
+                      pattern="[0-9]{6}"
+                    >
+                  </div>
+
+                  <div class="form-group">
+                    <label for="applicant_name_gov">Applicant Full Name *</label>
+                    <input type="text" id="applicant_name_gov" name="applicant_name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="gov_id_1">Upload 1 *</label>
+                    <input type="file" id="gov_id_1" name="gov_id_1" accept="image/*,.pdf" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="gov_id_2">Upload 2</label>
+                    <input type="file" id="gov_id_2" name="gov_id_2" accept="image/*,.pdf">
+                  </div>
+                </div>
+              </div>
+
+              <div class="error-message" id="memberGovIdFormError"></div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" style="width:100%; border:none;">
+                  Submit Step 2 — Government IDs
+                </button>
+              </div>
+            </form>
+
+            <form id="memberPsaForm" name="membership-psa" method="POST" data-netlify="true" netlify enctype="multipart/form-data" class="step-card">
+              <input type="hidden" name="form-name" value="membership-psa">
+
+              <div class="membership-section-title">
+                <h3>Step 3 — PSA Certified Birth Certificate</h3>
+                <p>Upload only PSA files in this section.</p>
+              </div>
+
+              <div class="upload-block">
+                <h4>PSA Certified Birth Certificate</h4>
+                <div class="membership-grid-3">
+                  <div class="form-group">
+                    <label for="application_reference_psa">Application Reference Number *</label>
+                    <input
+                      type="text"
+                      id="application_reference_psa"
+                      name="application_reference"
+                      class="ref-readonly"
+                      readonly
+                      required
+                      inputmode="numeric"
+                      maxlength="6"
+                      pattern="[0-9]{6}"
+                    >
+                  </div>
+
+                  <div class="form-group">
+                    <label for="applicant_name_psa">Applicant Full Name *</label>
+                    <input type="text" id="applicant_name_psa" name="applicant_name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="psa_1">Upload 1 *</label>
+                    <input type="file" id="psa_1" name="psa_1" accept="image/*,.pdf" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="psa_2">Upload 2</label>
+                    <input type="file" id="psa_2" name="psa_2" accept="image/*,.pdf">
+                  </div>
+                  <div class="form-group">
+                    <label for="psa_3">Upload 3</label>
+                    <input type="file" id="psa_3" name="psa_3" accept="image/*,.pdf">
+                  </div>
+                </div>
+              </div>
+
+              <div class="error-message" id="memberPsaFormError"></div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" style="width:100%; border:none;">
+                  Submit Step 3 — PSA Files
+                </button>
+              </div>
+            </form>
+
+            <form id="memberBarangayForm" name="membership-barangay" method="POST" data-netlify="true" netlify enctype="multipart/form-data" class="step-card">
+              <input type="hidden" name="form-name" value="membership-barangay">
+
+              <div class="membership-section-title">
+                <h3>Step 4 — Barangay Clearance</h3>
+                <p>Upload only barangay clearance files in this section.</p>
+              </div>
+
+              <div class="upload-block">
+                <h4>Barangay Clearance</h4>
+                <div class="membership-grid-2">
+                  <div class="form-group">
+                    <label for="application_reference_barangay">Application Reference Number *</label>
+                    <input
+                      type="text"
+                      id="application_reference_barangay"
+                      name="application_reference"
+                      class="ref-readonly"
+                      readonly
+                      required
+                      inputmode="numeric"
+                      maxlength="6"
+                      pattern="[0-9]{6}"
+                    >
+                  </div>
+
+                  <div class="form-group">
+                    <label for="applicant_name_barangay">Applicant Full Name *</label>
+                    <input type="text" id="applicant_name_barangay" name="applicant_name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="barangay_clearance_1">Upload 1 *</label>
+                    <input type="file" id="barangay_clearance_1" name="barangay_clearance_1" accept="image/*,.pdf" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="barangay_clearance_2">Upload 2</label>
+                    <input type="file" id="barangay_clearance_2" name="barangay_clearance_2" accept="image/*,.pdf">
+                  </div>
+                </div>
+              </div>
+
+              <div class="error-message" id="memberBarangayFormError"></div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" style="width:100%; border:none;">
+                  Submit Step 4 — Barangay Clearance
+                </button>
+              </div>
+            </form>
+
+            <form id="memberPhotosSignatureForm" name="membership-photos-signature" method="POST" data-netlify="true" netlify enctype="multipart/form-data" class="step-card">
+              <input type="hidden" name="form-name" value="membership-photos-signature">
+
+              <div class="membership-section-title">
+                <h3>Step 5 — ID Pictures and Signature</h3>
+                <p>Upload your ID pictures and signature in this section.</p>
+              </div>
+
+              <div class="upload-block">
+                <h4>2 Pcs. 2x2 ID Picture</h4>
+                <div class="membership-grid-2">
+                  <div class="form-group">
+                    <label for="application_reference_photo">Application Reference Number *</label>
+                    <input
+                      type="text"
+                      id="application_reference_photo"
+                      name="application_reference"
+                      class="ref-readonly"
+                      readonly
+                      required
+                      inputmode="numeric"
+                      maxlength="6"
+                      pattern="[0-9]{6}"
+                    >
+                  </div>
+
+                  <div class="form-group">
+                    <label for="applicant_name_photo">Applicant Full Name *</label>
+                    <input type="text" id="applicant_name_photo" name="applicant_name" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="id_pic_1">Upload 1 *</label>
+                    <input type="file" id="id_pic_1" name="id_pic_1" accept="image/*" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="id_pic_2">Upload 2 *</label>
+                    <input type="file" id="id_pic_2" name="id_pic_2" accept="image/*" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="upload-block">
+                <h4>Signature</h4>
+                <p class="upload-note">
+                  Please upload your signature written on a clean white paper with 3 written signatures.
+                </p>
+                <div style="margin-top:14px;">
+                  <div class="form-group">
+                    <label for="signature_upload_1">Upload Signature *</label>
+                    <input type="file" id="signature_upload_1" name="signature_upload_1" accept="image/*,.pdf" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="error-message" id="memberPhotosSignatureFormError"></div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" style="width:100%; border:none;">
+                  Submit Step 5 — Photos and Signature
+                </button>
+                <p class="form-note">Make sure you use the same applicant name in every upload section.</p>
+              </div>
+            </form>
+          </div>
+
+          <div class="important-notice-card">
+            <span class="membership-eyebrow">Important Notice</span>
+            <h2>Application Follow-Up</h2>
+            <p>
+              Applicants will be contacted through their provided email address regarding the applicable membership fee.
+            </p>
+            <p style="margin-top: 10px;">
+              Applicants will also be notified through email if there are any concerns, missing documents, or additional requirements for their membership application.
+            </p>
+          </div>
+
+          <div class="membership-notes-card">
+            <span class="membership-eyebrow">Membership Notes</span>
+            <h2>Important membership fees and reminders</h2>
+
+            <div class="fees-grid">
+              <div class="fee-card">
+                <h3>Minimum Membership Fee</h3>
+                <p>Php 7,000.00</p>
+                <ul>
+                  <li>Membership Fee: Php 100.00</li>
+                  <li>Membership ID: Php 100.00</li>
+                  <li>Service Fee: Php 100.00</li>
+                  <li>Passbook Fee: Php 200.00</li>
+                  <li>Savings: Php 500.00</li>
+                  <li>Paid-Up Share Capital: Php 5,000.00</li>
+                  <li>OGBU Mortuary: Php 1,000.00</li>
+                </ul>
+              </div>
+
+              <div class="fee-card">
+                <h3>Initial Membership Fee</h3>
+                <p>Php 3,500.00</p>
+                <ul>
+                  <li>Membership Fee: Php 100.00</li>
+                  <li>Membership ID: Php 100.00</li>
+                  <li>Service Fee: Php 100.00</li>
+                  <li>Passbook Fee: Php 200.00</li>
+                  <li>Savings: Php 500.00</li>
+                  <li>Paid-Up Share Capital: Php 2,500.00</li>
+                </ul>
+              </div>
+            </div>
+
+            <ul class="rules-list">
+              <li>Failure to attend the General Assembly and ownership seminar may result in a Php 100.00 fine unless excused.</li>
+              <li>Applicants who only paid the initial share capital may not yet avail of loan services.</li>
+              <li>Annual OGBU contribution applies upon completion of the required membership amount.</li>
+              <li>Please ensure your submitted documents are clear and readable.</li>
+              <li>Always use the same application reference number for all forms.</li>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="script.js"></script>
+</body>
+</html>

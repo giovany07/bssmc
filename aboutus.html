@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - BSSMC</title>
+  <link rel="icon" href="Assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .about-section {
+      padding-bottom: 0;
+    }
+
+    .about-story-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.76));
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      border-radius: 36px;
+      padding: 34px;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(14px);
+      margin-bottom: 28px;
+    }
+
+    .about-story-card h2,
+    .about-values h2,
+    .mission-vision-card h3 {
+      color: var(--text-dark);
+    }
+
+    .about-story-card p,
+    .mission-vision-card p,
+    .value-card p {
+      color: var(--text-body);
+      line-height: 1.9;
+    }
+
+    .mission-vision-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .mission-vision-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.76));
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(14px);
+    }
+
+    .mission-vision-card .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .about-values {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.74));
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      border-radius: 36px;
+      padding: 34px;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(14px);
+    }
+
+    .about-values-header {
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    .about-values-header p {
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .value-card {
+      background: linear-gradient(135deg, rgba(76, 175, 47, 0.08), rgba(46, 125, 50, 0.05));
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      border-radius: 26px;
+      padding: 24px;
+      transition: var(--transition);
+    }
+
+    .value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .value-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(76, 175, 47, 0.14);
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .value-card h4 {
+      margin-bottom: 10px;
+      color: var(--text-dark);
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 900px) {
+      .mission-vision-grid,
+      .values-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .mission-vision-grid,
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-story-card,
+      .about-values,
+      .mission-vision-card {
+        padding: 24px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-box">
+          <div class="page-hero-copy">
+            <div class="hero-badge">About BSSMC</div>
+            <h1>Our story is rooted in service, community, and shared progress</h1>
+            <p>
+              Learn more about the journey, mission, and values that continue to shape Bokod Sulphur Spring Multipurpose Cooperative.
+            </p>
+          </div>
+          <div class="page-hero-image">
+            <img src="Assets/About/about-hero.jpg" alt="About BSSMC">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section about-section">
+      <div class="container">
+        <div class="about-story-card">
+          <div class="section-heading" style="margin-bottom: 28px;">
+            <span class="eyebrow">Our Story</span>
+            <h2>Growing from local initiative into a cooperative with purpose</h2>
+          </div>
+
+          <p>
+            Bokod Sulfur Spring Multipurpose Cooperative (BSSMC) was established in [year] by dedicated community members who recognized the value and potential of the sulfur spring. What began as a simple initiative steadily grew into a cooperative that supports both members and the wider community.
+          </p>
+          <br>
+          <p>
+            Known for its therapeutic properties, the sulfur spring became the foundation of the cooperative’s identity. Over time, BSSMC expanded its work beyond tourism and into sulfur-based products, agricultural support, member-centered services, and community development programs.
+          </p>
+        </div>
+
+        <div class="mission-vision-grid">
+          <div class="mission-vision-card">
+            <span class="eyebrow">Our Mission</span>
+            <h3>To serve with sustainability and purpose</h3>
+            <p>
+              To provide sustainable livelihood opportunities and quality services to our members while preserving and promoting the natural heritage of the sulfur spring.
+            </p>
+          </div>
+
+          <div class="mission-vision-card">
+            <span class="eyebrow">Our Vision</span>
+            <h3>To become a stronger and more progressive cooperative</h3>
+            <p>
+              A self-reliant and progressive cooperative that enhances the quality of life of its members and contributes to meaningful community development.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-values">
+          <div class="about-values-header">
+            <span class="eyebrow">Core Values</span>
+            <h2>The principles that guide every step we take</h2>
+            <p>
+              Our values define how we work, how we serve, and how we continue to grow together as one cooperative community.
+            </p>
+          </div>
+
+          <div class="values-grid">
+            <div class="value-card">
+              <div class="value-number">01</div>
+              <h4>Cooperation</h4>
+              <p>Working together for shared growth, mutual support, and stronger community relationships.</p>
+            </div>
+
+            <div class="value-card">
+              <div class="value-number">02</div>
+              <h4>Sustainability</h4>
+              <p>Protecting our resources and building systems that will continue to benefit future generations.</p>
+            </div>
+
+            <div class="value-card">
+              <div class="value-number">03</div>
+              <h4>Integrity</h4>
+              <p>Promoting honest, transparent, and responsible service in every part of the cooperative.</p>
+            </div>
+
+            <div class="value-card">
+              <div class="value-number">04</div>
+              <h4>Community</h4>
+              <p>Putting people first and supporting the needs of members and the local community.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="script.js"></script>
+</body>
+</html>

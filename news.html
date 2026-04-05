@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News - BSSMC</title>
+  <link rel="icon" href="Assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .news-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .featured-news,
+    .news-card,
+    .news-sidebar {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.76));
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      border-radius: 32px;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(14px);
+    }
+
+    .featured-news {
+      overflow: hidden;
+    }
+
+    .featured-news img {
+      height: 360px;
+      object-fit: cover;
+    }
+
+    .featured-news-content {
+      padding: 28px;
+    }
+
+    .news-tag {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(76, 175, 47, 0.10);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .news-meta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .featured-news h2,
+    .news-card h3,
+    .news-sidebar h3 {
+      color: var(--text-dark);
+    }
+
+    .featured-news p,
+    .news-card p,
+    .news-sidebar p {
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 28px;
+    }
+
+    .news-card {
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .news-card img {
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .news-card-content {
+      padding: 22px;
+    }
+
+    .news-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .news-sidebar {
+      padding: 26px 24px;
+    }
+
+    .news-sidebar h3 {
+      margin-bottom: 16px;
+    }
+
+    .sidebar-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .sidebar-item {
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(46, 125, 50, 0.08);
+    }
+
+    .sidebar-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .sidebar-item strong {
+      display: block;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .sidebar-item span {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1024px) {
+      .news-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-news img {
+        height: 240px;
+      }
+
+      .featured-news-content,
+      .news-card-content,
+      .news-sidebar {
+        padding: 20px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-box">
+          <div class="page-hero-copy">
+            <div class="hero-badge">BSSMC News</div>
+            <h1>Stay updated with the latest news and cooperative developments</h1>
+            <p>
+              Read announcements, community updates, cooperative milestones, and stories that matter to our members.
+            </p>
+          </div>
+          <div class="page-hero-image">
+            <img src="Assets/About/about-hero.jpg" alt="BSSMC News">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="container">
+        <div class="news-layout">
+          <div>
+            <article class="featured-news">
+              <img src="Assets/Background.jpg" alt="Featured BSSMC News">
+              <div class="featured-news-content">
+                <span class="news-tag">Featured Story</span>
+                <div class="news-meta">
+                  <span>April 2026</span>
+                  <span>BSSMC Update</span>
+                </div>
+                <h2>BSSMC continues to strengthen member-focused services for the community</h2>
+                <p>
+                  The cooperative remains committed to improving access to services, supporting local development, and strengthening community participation through programs centered on sustainability and shared progress.
+                </p>
+              </div>
+            </article>
+
+            <div class="news-grid">
+              <article class="news-card">
+                <img src="Assets/Products/products-hero.jpg" alt="Product News">
+                <div class="news-card-content">
+                  <span class="news-tag">Products</span>
+                  <div class="news-meta">
+                    <span>March 2026</span>
+                  </div>
+                  <h3>Expanded product availability for members and local buyers</h3>
+                  <p>
+                    BSSMC continues to improve access to sulfur-based products and related cooperative goods for the community.
+                  </p>
+                </div>
+              </article>
+
+              <article class="news-card">
+                <img src="Assets/Services/services-hero.jpg" alt="Service News">
+                <div class="news-card-content">
+                  <span class="news-tag">Services</span>
+                  <div class="news-meta">
+                    <span>March 2026</span>
+                  </div>
+                  <h3>Community-centered service improvements planned this year</h3>
+                  <p>
+                    Service enhancement initiatives are being prepared to better support members and improve day-to-day transactions.
+                  </p>
+                </div>
+              </article>
+
+              <article class="news-card">
+                <img src="Assets/Membership/membership-hero.jpg" alt="Membership News">
+                <div class="news-card-content">
+                  <span class="news-tag">Membership</span>
+                  <div class="news-meta">
+                    <span>February 2026</span>
+                  </div>
+                  <h3>Membership awareness efforts continue across the community</h3>
+                  <p>
+                    BSSMC encourages more residents to learn about the value of cooperative membership and long-term participation.
+                  </p>
+                </div>
+              </article>
+
+              <article class="news-card">
+                <img src="Assets/Team/team-hero.jpg" alt="Community News">
+                <div class="news-card-content">
+                  <span class="news-tag">Community</span>
+                  <div class="news-meta">
+                    <span>February 2026</span>
+                  </div>
+                  <h3>Leadership and staff remain focused on quality member support</h3>
+                  <p>
+                    Cooperative leaders and staff continue to work together to provide responsive service and strengthen trust.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <aside>
+            <div class="news-sidebar">
+              <h3>Recent Updates</h3>
+              <div class="sidebar-list">
+                <div class="sidebar-item">
+                  <strong>Upcoming cooperative announcements to be posted soon</strong>
+                  <span>April 2026</span>
+                </div>
+                <div class="sidebar-item">
+                  <strong>Product and service improvements under review</strong>
+                  <span>March 2026</span>
+                </div>
+                <div class="sidebar-item">
+                  <strong>Membership information drive continues</strong>
+                  <span>February 2026</span>
+                </div>
+                <div class="sidebar-item">
+                  <strong>Community engagement remains a priority</strong>
+                  <span>January 2026</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="script.js"></script>
+</body>
+</html>

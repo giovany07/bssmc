@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events - BSSMC</title>
+  <link rel="icon" href="Assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .event-card,
+    .calendar-panel,
+    .event-highlight {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.76));
+      border: 1px solid rgba(31, 111, 67, 0.08);
+      border-radius: 32px;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(14px);
+    }
+
+    .event-card {
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .event-card img {
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .event-card-content {
+      padding: 22px;
+    }
+
+    .event-date-badge {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(76, 175, 47, 0.10);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .event-card h3,
+    .calendar-panel h3,
+    .event-highlight h3 {
+      color: var(--text-dark);
+      margin-bottom: 10px;
+    }
+
+    .event-card p,
+    .calendar-panel p,
+    .event-highlight p {
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+
+    .event-meta {
+      display: grid;
+      gap: 8px;
+      margin: 14px 0 18px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .events-bottom {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 28px;
+      align-items: start;
+      margin-top: 30px;
+    }
+
+    .calendar-panel,
+    .event-highlight {
+      padding: 26px 24px;
+    }
+
+    .calendar-panel .eyebrow,
+    .event-highlight .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .calendar-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .calendar-item {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(76, 175, 47, 0.07);
+    }
+
+    .calendar-item strong {
+      display: block;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .calendar-item span {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .event-highlight img {
+      margin-top: 18px;
+      border-radius: 24px;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    @media (max-width: 1024px) {
+      .events-grid,
+      .events-bottom {
+        grid-template-columns: 1fr;
+      }
+
+      .events-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .events-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .event-card-content,
+      .calendar-panel,
+      .event-highlight {
+        padding: 20px 18px;
+      }
+
+      .event-card img,
+      .event-highlight img {
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-box">
+          <div class="page-hero-copy">
+            <div class="hero-badge">BSSMC Events</div>
+            <h1>Discover upcoming events, gatherings, and cooperative activities</h1>
+            <p>
+              Stay connected with BSSMC through community events, meetings, information sessions, and special activities.
+            </p>
+          </div>
+          <div class="page-hero-image">
+            <img src="Assets/Services/services-hero.jpg" alt="BSSMC Events">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Upcoming Events</span>
+          <h2>Be part of the activities that bring our cooperative together</h2>
+          <p>
+            Join events that encourage learning, participation, and stronger connections within the BSSMC community.
+          </p>
+        </div>
+
+        <div class="events-grid">
+          <article class="event-card">
+            <img src="Assets/Membership/membership-hero.jpg" alt="Membership Orientation">
+            <div class="event-card-content">
+              <span class="event-date-badge">May 2026</span>
+              <h3>Membership Orientation Session</h3>
+              <p>
+                An introductory event for new and interested members to learn about the cooperative, benefits, and participation opportunities.
+              </p>
+              <div class="event-meta">
+                <span><strong>Location:</strong> BSSMC Main Office</span>
+                <span><strong>Time:</strong> 9:00 AM</span>
+              </div>
+              <a href="beamember.html" class="btn btn-secondary">Learn More</a>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <img src="Assets/Products/products-hero.jpg" alt="Product Showcase">
+            <div class="event-card-content">
+              <span class="event-date-badge">June 2026</span>
+              <h3>Community Product Showcase</h3>
+              <p>
+                A special event highlighting BSSMC products and how they support local identity, member livelihood, and community value.
+              </p>
+              <div class="event-meta">
+                <span><strong>Location:</strong> Community Activity Area</span>
+                <span><strong>Time:</strong> 1:00 PM</span>
+              </div>
+              <a href="products.html" class="btn btn-secondary">View Products</a>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <img src="Assets/Team/team-hero.jpg" alt="Community Gathering">
+            <div class="event-card-content">
+              <span class="event-date-badge">July 2026</span>
+              <h3>Community and Members Gathering</h3>
+              <p>
+                A cooperative gathering focused on engagement, updates, and shared conversations between leadership and members.
+              </p>
+              <div class="event-meta">
+                <span><strong>Location:</strong> BSSMC Grounds</span>
+                <span><strong>Time:</strong> 10:00 AM</span>
+              </div>
+              <a href="contactus.html" class="btn btn-secondary">Contact Us</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="events-bottom">
+          <div class="calendar-panel">
+            <span class="eyebrow">Event Calendar</span>
+            <h3>Planned activities</h3>
+            <p>
+              Keep track of the events and activities currently lined up for members and the community.
+            </p>
+
+            <div class="calendar-list">
+              <div class="calendar-item">
+                <strong>Membership Orientation</strong>
+                <span>May 2026 · BSSMC Main Office</span>
+              </div>
+              <div class="calendar-item">
+                <strong>Community Product Showcase</strong>
+                <span>June 2026 · Community Activity Area</span>
+              </div>
+              <div class="calendar-item">
+                <strong>Members Gathering</strong>
+                <span>July 2026 · BSSMC Grounds</span>
+              </div>
+              <div class="calendar-item">
+                <strong>Service Information Session</strong>
+                <span>August 2026 · To be announced</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-highlight">
+            <span class="eyebrow">Featured Event</span>
+            <h3>Community Product Showcase</h3>
+            <p>
+              This featured event highlights BSSMC products, cooperative participation, and community connection. It is designed to promote awareness, celebrate local value, and encourage support for cooperative initiatives.
+            </p>
+            <img src="Assets/Products/products-hero.jpg" alt="Featured Event">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="script.js"></script>
+</body>
+</html>
